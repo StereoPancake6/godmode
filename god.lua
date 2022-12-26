@@ -8,5 +8,4 @@
     spoofFolder.Parent = newCharacter;
     newCharacter:WaitForChild('RagdollConstraints'):Destroy();
     local spoofValue = Instance.new('BoolValue', newCharacter);
-    spoofValue.Name = 'RagdollConstraints';
-end)
+    spoofValue.Name = 'RagdollConstraints';)
