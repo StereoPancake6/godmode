@@ -1,11 +1,16 @@
-    local localPlayer = game:GetService('Players').LocalPlayer;
-    local localCharacter = localPlayer.Character;
-    localCharacter:FindFirstChildOfClass('Humanoid').Health = 0;
-    localCharacter:ClearAllChildren()
-    local newCharacter = localPlayer.CharacterAdded:Wait();
-    local spoofFolder = Instance.new('Folder');
-    spoofFolder.Name = 'FULLY_LOADED_CHAR';
-    spoofFolder.Parent = newCharacter;
-    newCharacter:WaitForChild('RagdollConstraints'):Destroy();
-    local spoofValue = Instance.new('BoolValue', newCharacter);
-    spoofValue.Name = 'RagdollConstraints';)
+        local Loop
+        local loopFunction = function()
+                for _,v in pairs(game:GetService('Players'):GetChildren()) do
+                    if v.Character and v.DataFolder.Officer.Value == 1 then
+                        if (v.Character.HumanoidRootPart.Position - player.Character.HumanoidRootPart.Position).Magnitude <= 30 and player.Character.BodyEffects['K.O'].Value == true then
+                            player.Character:Destroy()
+                        end
+                    end
+                end 
+        end;
+        local Start = function()
+            Loop = game:GetService("RunService").Heartbeat:Connect(loopFunction);
+        end;
+        local Pause = function()
+            Loop:Disconnect()
+        end
